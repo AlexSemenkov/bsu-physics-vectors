@@ -1,4 +1,4 @@
-package by.bsu.physics.project;
+package by.bsu.physics;
 
 /**
  * @author asemenkov

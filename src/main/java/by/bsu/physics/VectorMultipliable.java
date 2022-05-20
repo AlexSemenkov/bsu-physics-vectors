@@ -1,6 +1,4 @@
-package by.bsu.physics.project;
-
-import by.bsu.physics.project.Vector;
+package by.bsu.physics;
 
 /**
  * @author asemenkov
