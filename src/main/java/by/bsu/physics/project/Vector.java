@@ -6,10 +6,10 @@ package by.bsu.physics.project;
  */
 public abstract class Vector {
 
-    public abstract double getLength() throws IllegalArgumentException;
+    public abstract double getLength() throws InterruptedException;
 
-    public abstract double getScalarProduct(Vector vector) throws IllegalArgumentException;
+    public abstract double getScalarProduct(Vector vector) throws InterruptedException;
 
-    public abstract double getCosAngle(Vector vector) throws IllegalArgumentException;
+    public abstract double getCosAngle(Vector vector) throws InterruptedException;
 
 }
