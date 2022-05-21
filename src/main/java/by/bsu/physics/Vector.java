@@ -6,10 +6,10 @@ package by.bsu.physics;
  */
 public abstract class Vector {
 
-    public abstract double getLength() throws IllegalAccessException;
+    public abstract double getLength();
 
-    public abstract double getScalarProduct(Vector vector) throws IllegalAccessException;
+    public abstract double getScalarProduct(Vector vector);
 
-    public abstract double getCosAngle(Vector vector) throws IllegalAccessException;
+    public abstract double getCosAngle(Vector vector);
 
 }
