@@ -6,7 +6,7 @@ package by.bsu.physics;
  */
 public abstract class Vector {
 
-    public abstract double getLength() throws IllegalArgumentException;
+    public abstract double getLength();
 
     public abstract double getScalarProduct(Vector vector);
 
