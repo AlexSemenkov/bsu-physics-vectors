@@ -5,6 +5,7 @@ import java.util.Random;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.IntStream;
 
+
 public class BillionCoordVector extends AbstractVector {
     private Random random = new Random(0);
     private byte[] coordinate = new byte[1_000_000_000];

@@ -1,5 +1,6 @@
 package by.bsu.physics.ziziko;
 
+
 import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 
 class CommonMathVector extends Vector implements VectorMultipliable {
