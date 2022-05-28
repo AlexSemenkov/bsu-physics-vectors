@@ -5,6 +5,7 @@ import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 class CommonMathVector extends Vector implements VectorMultipliable {
     final Vector3D vector3D;
 
+
     public CommonMathVector(double x, double y, double z) {
         vector3D = new Vector3D(x, y, z);
 

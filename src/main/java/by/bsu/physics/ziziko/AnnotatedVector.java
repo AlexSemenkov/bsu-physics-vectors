@@ -8,6 +8,8 @@ import java.util.TreeMap;
 public class AnnotatedVector extends AbstractVector {
     private SortedMap<Integer, Field> fieldMap = new TreeMap();
 
+
+
     public AnnotatedVector() {
         Field[] var1 = this.getClass().getDeclaredFields();
 

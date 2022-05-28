@@ -1,5 +1,6 @@
 package by.bsu.physics.ziziko;
 
+
 public class TwoCoordVector extends AnnotatedVector {
     @Coordinate(0)
     double x;
