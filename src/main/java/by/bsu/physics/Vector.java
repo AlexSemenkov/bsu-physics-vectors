@@ -12,4 +12,5 @@ public abstract class Vector {
 
     public abstract double getCosAngle(Vector vector);
 
+    public abstract <T> Vector3D multiply(T vector);
 }
