@@ -1,13 +1,14 @@
 package by.bsu.physics.ziziko;
 
+import by.bsu.physics.Vector;
+
 import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-public class AnnotatedVector extends AbstractVector {
+public class AnnotatedVector extends Vector {
     private SortedMap<Integer, Field> fieldMap = new TreeMap();
-
 
     public AnnotatedVector() {
         Field[] var1 = this.getClass().getDeclaredFields();
@@ -37,34 +38,45 @@ public class AnnotatedVector extends AbstractVector {
 
     }
 
-    double getLength() throws IllegalAccessException {
+    public double getLength()  {
         double result = 0.0;
+        for (Field f: fieldMap.values()) {
 
-        Field f;
-        for(Iterator var3 = this.fieldMap.values().iterator(); var3.hasNext(); result += Math.pow(f.getDouble(this), 2.0)) {
-            f = (Field)var3.next();
+            try {
+                result += Math.pow((double) f.get(this), 2);//координаты
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+
         }
-
         return Math.sqrt(result);
     }
 
-    double getScalarProduct(AbstractVector vector) throws IllegalAccessException {
+    public double getScalarProduct(Vector vector) {
         double result = 0.0;
-        if (!(vector instanceof AnnotatedVector annotatedVector)) {
+        if (!(vector instanceof AnnotatedVector)) {
             throw new IllegalArgumentException("Wrong type of vector.");
-        } else if (this.fieldMap.size() != ((AnnotatedVector)vector).fieldMap.size()) {
+        }
+
+        if (!(this.fieldMap.size()==((AnnotatedVector) vector).fieldMap.size()))
+        {
             throw new IllegalArgumentException("Vectors have different sizes.");
-        } else {
-            Field f;
-            for(Iterator var5 = this.fieldMap.values().iterator(); var5.hasNext(); result += f.getDouble(vector) * f.getDouble(this)) {
-                f = (Field)var5.next();
+        }
+
+        else {
+            for (Field f: fieldMap.values()) {
+                try {
+                    result += f.getDouble(vector) * f.getDouble(this);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
             }
 
-            return result;
         }
+        return result;
     }
 
-    double getCosAngle(AbstractVector that) throws IllegalAccessException {
+    public double getCosAngle(Vector that)  {
         return this.getScalarProduct(that) / (this.getLength() * that.getLength());
     }
 }

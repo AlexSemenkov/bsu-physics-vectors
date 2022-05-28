@@ -1,12 +1,13 @@
 package by.bsu.physics.ziziko;
 
+import by.bsu.physics.Vector;
+
 import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.IntStream;
 
-
-public class BillionCoordVector extends AbstractVector {
+public class BillionCoordVector extends Vector {
     private Random random = new Random(0);
     private byte[] coordinate = new byte[1_000_000_000];
 
@@ -33,12 +34,12 @@ public class BillionCoordVector extends AbstractVector {
         for (int i = 0; i < numberOfThreads; i++) {
             int finalI = i;
 
-            int portion = (coordinate.length / numberOfThreads);
+            int portion = coordinate.length/numberOfThreads;
             Runnable runnable = new Runnable() {
                 @Override
                 public void run() {
                     for (int j = portion * finalI; j < portion * (finalI + 1); j++) {
-                        sumSquaresOfCoordinates[finalI] = (long) Math.pow(coordinate[j], 2);
+                        sumSquaresOfCoordinates[finalI] += (long) Math.pow(coordinate[j], 2);
                     }
                 }
 
@@ -53,11 +54,11 @@ public class BillionCoordVector extends AbstractVector {
                 e.printStackTrace();
             }
         }
-        return Arrays.stream(sumSquaresOfCoordinates).sum();
+        return Math.sqrt(Arrays.stream(sumSquaresOfCoordinates).sum());
     }
 
     @Override
-    public double getScalarProduct(AbstractVector vector) {
+    public double getScalarProduct(Vector vector) {
         if (!(vector instanceof BillionCoordVector)) {
             throw new IllegalArgumentException("Wrong type of vector.");
         }
@@ -66,11 +67,11 @@ public class BillionCoordVector extends AbstractVector {
     }
 
     @Override
-    public double getCosAngle(AbstractVector that) {
+    public double getCosAngle(Vector that) {
         return getScalarProduct(that) / (that.getLength() * this.getLength());
     }
 
-    public double getCosAngle(AbstractVector that, int numberOfThreads) {
+    public double getCosAngle(Vector that, int numberOfThreads) {
         BillionCoordVector billionCoordVector = (BillionCoordVector) that;
         AtomicReference<Double> scal = new AtomicReference<>();
         AtomicReference<Double> len1 = new AtomicReference<>();
@@ -92,7 +93,7 @@ public class BillionCoordVector extends AbstractVector {
         Runnable run3 = () -> {
             len2.set(billionCoordVector.getLength(numberOfThreads));
         };
-        Thread thread3 = new Thread(run1);
+        Thread thread3 = new Thread(run3);
         thread3.start();
         Thread[] threads = {thread1, thread2, thread3};
 
