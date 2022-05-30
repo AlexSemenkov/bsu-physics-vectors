@@ -1,8 +1,8 @@
-
-
-
+package by.bsu.physics.ryabcev;
 import by.bsu.physics.Vector;
 import by.bsu.physics.VectorMultipliable;
+import org.apache.commons.math3.geometry.euclidean.threed.Euclidean3D;
+import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 
 class CommonMathVector extends Vector implements VectorMultipliable<CommonMathVector> {
     private final Vector3D vector3D;
@@ -43,7 +43,7 @@ class CommonMathVector extends Vector implements VectorMultipliable<CommonMathVe
     }
 
     @Override
-    public double getCosAngle(Vector vector) {
+    public double getCosAngle(Vector vector)  {
         return getScalarProduct(vector) / (vector.getLength() * this.getLength());
     }
 
