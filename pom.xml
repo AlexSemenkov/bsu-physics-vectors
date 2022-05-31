@@ -39,9 +39,9 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>${java.version}</source>
+                    <source>16</source>
                     <release>${java.version}</release>
-                    <target>${java.version}</target>
+                    <target>16</target>
                 </configuration>
             </plugin>
             <plugin>
