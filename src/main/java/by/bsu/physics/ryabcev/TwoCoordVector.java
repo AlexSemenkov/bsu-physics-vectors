@@ -1,5 +1,4 @@
-
-
+package by.bsu.physics.ryabcev;
 public class TwoCoordVector extends AnnotatedVector {
     @Coordinate(0)
     double x;

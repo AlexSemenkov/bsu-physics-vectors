@@ -1,11 +1,10 @@
-
+package by.bsu.physics.ryabcev;
 import by.bsu.physics.Vector;
 
 import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.IntStream;
-
 
 public class BillionCoordVector extends Vector {
     private Random random = new Random(0);
@@ -67,7 +66,7 @@ public class BillionCoordVector extends Vector {
     }
 
     @Override
-    public double getCosAngle(Vector that) {
+    public double getCosAngle(Vector that)  {
         return getScalarProduct(that) / (that.getLength() * this.getLength());
     }
 
@@ -106,7 +105,7 @@ public class BillionCoordVector extends Vector {
             }
         }
 
-        return scal.get()/(len1.get()*len2.get());
+       return scal.get()/(len1.get()*len2.get());
 
     }
 }
